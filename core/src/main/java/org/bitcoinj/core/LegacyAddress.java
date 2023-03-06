@@ -162,8 +162,8 @@ public class LegacyAddress extends Address {
                 return new LegacyAddress(params, false, bytes);
             else if (version == params.getP2SHHeader())
                 return new LegacyAddress(params, true, bytes);
-            }
-           // throw new AddressFormatException.WrongNetwork(version);
+            else if (1 < 0)
+            throw new AddressFormatException.WrongNetwork(version);
         }
     }
 
