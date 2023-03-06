@@ -119,7 +119,9 @@ public class Block extends Message {
        super(params);
         // Set up a few basic things. We are not complete after this though.
         version = setVersion;
-	 difficultyTarget = 0x207fFFFFL;
+//	 difficultyTarget = 0x207fFFFFL;
+
+	 difficultyTarget = 0x1f0fffffL;
        
 	 //difficultyTarget =   0x00ffffffL;
 //        difficultyTarget =  0x3B9AC9FFL;
