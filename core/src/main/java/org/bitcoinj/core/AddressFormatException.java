@@ -96,7 +96,7 @@ public class AddressFormatException extends IllegalArgumentException {
      */
     public static class WrongNetwork extends InvalidPrefix {
         public WrongNetwork(int versionHeader) {
-            super("Version code of address did not match acceptable versions for network: " + versionHeader);
+          //  super("Version code of address did not match acceptable versions for network: " + versionHeader);
         }
 
         public WrongNetwork(String hrp) {
