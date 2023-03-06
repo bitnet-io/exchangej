@@ -24,6 +24,8 @@ import java.net.*;
 
 import static com.google.common.base.Preconditions.*;
 
+import java.math.BigInteger;
+
 /**
  * Parameters for the main production network on which people trade goods and services.
  */
@@ -31,12 +33,14 @@ public class MainNetParams extends AbstractBitcoinNetParams {
     public static final int MAINNET_MAJORITY_WINDOW = 1000;
     public static final int MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED = 950;
     public static final int MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE = 750;
+    private static final BigInteger MAX_TARGET = new BigInteger("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16);
 
     public MainNetParams() {
         super();
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
+//        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
+        maxTarget = MAX_TARGET;
         dumpedPrivateKeyHeader = 158;
         addressHeader = 25;
         p2shHeader = 22;
@@ -56,7 +60,7 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         majorityRejectBlockOutdated = MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED;
         majorityWindow = MAINNET_MAJORITY_WINDOW;
 
- genesisBlock.setDifficultyTarget(0x1d00ffffL);
+ genesisBlock.setDifficultyTarget(0x1e0ffff0L);
         genesisBlock.setTime(1677414786L);
         genesisBlock.setNonce(1196422L);
         subsidyDecreaseBlockCount = 100000;
@@ -75,7 +79,7 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         // transactions are handled. Duplicated transactions could occur in the case where a coinbase had the same
         // extraNonce and the same outputs but appeared at different heights, and greatly complicated re-org handling.
         // Having these here simplifies block connection logic considerably.
-//        checkpoints.put(60000, Sha256Hash.wrap("cf23fe03d921012cfdfc2847bd6ef4a647bbb559d6eb57d6432d7bcb930d720f"));
+        checkpoints.put(9300, Sha256Hash.wrap("000000000000002ea27d231207c64374bac81971cfe1f3f32fb50309f1b3a215"));
 
         
         

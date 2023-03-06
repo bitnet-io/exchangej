@@ -36,7 +36,9 @@ public class UnitTestParams extends AbstractBitcoinNetParams {
         packetMagic = 0x0b110907;
         addressHeader = 111;
         p2shHeader = 196;
-        maxTarget = new BigInteger("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16);
+//				  ("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        maxTarget = new BigInteger("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16);
+//        maxTarget = new BigInteger("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16);
         genesisBlock.setTime(Utils.currentTimeSeconds());
         genesisBlock.setDifficultyTarget(Block.EASIEST_DIFFICULTY_TARGET);
         genesisBlock.solve();
