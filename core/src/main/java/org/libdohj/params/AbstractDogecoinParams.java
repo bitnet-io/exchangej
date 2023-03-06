@@ -63,9 +63,9 @@ public abstract class AbstractDogecoinParams extends NetworkParameters implement
     public static final int DOGE_INTERVAL_NEW = DOGE_TARGET_TIMESPAN_NEW / DOGE_TARGET_SPACING;
 
     /** Currency code for base 1 Dogecoin. */
-    public static final String CODE_DOGE = "RADC";
+    public static final String CODE_DOGE = "BIT";
     /** Currency code for base 1/1,000 Dogecoin. */
-    public static final String CODE_MDOGE = "mRADC";
+    public static final String CODE_MDOGE = "mBIT";
     /** Currency code for base 1/100,000,000 Dogecoin. */
     public static final String CODE_KOINU = "radiowaves";
 
@@ -122,15 +122,17 @@ public abstract class AbstractDogecoinParams extends NetworkParameters implement
         newInterval = DOGE_INTERVAL_NEW;
         targetTimespan = DOGE_TARGET_TIMESPAN;
         newTargetTimespan = DOGE_TARGET_TIMESPAN_NEW;
-        maxTarget = Utils.decodeCompactBits(0x1e0ffff0L);
+        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
         diffChangeTarget = setDiffChangeTarget;
 // https://github.com/c4pt000/radiocoin/blob/c2c4c5f9dbf38b985b43077d506c161a3e91a8df/src/chainparams.cpp#L180
         
-        packetMagic = 0xd1d1d1d1;
+        packetMagic = 0xd1e1d1e1;
 
         
-         bip32HeaderP2PKHpub = 0x02facafd; //The 4 byte header that serializes in base58 to "dgub".
-        bip32HeaderP2PKHpriv =  0x02fac398; 
+          bip32HeaderP2PKHpub = 0x0488b21e; // The 4 byte header that serializes in base58 to "xpub".
+        bip32HeaderP2PKHpriv = 0x0488ade4; // The 4 byte header that serializes in base58 to "xprv"
+        bip32HeaderP2WPKHpub = 0x04b24746; // The 4 byte header that serializes in base58 to "zpub".
+        bip32HeaderP2WPKHpriv = 0x04b2430c; // The 4 byte header that serializes in base58 to "zprv"
         
        // bip32HeaderP2PKHpub = 0x0488C42E; //The 4 byte header that serializes in base58 to "xpub". (?)
         //bip32HeaderP2PKHpriv = 0x0488E1F4; //The 4 byte header that serializes in base58 to "xprv" (?)
@@ -144,11 +146,11 @@ public abstract class AbstractDogecoinParams extends NetworkParameters implement
                 // could be byte flipped here differently f0ff0f1e0 "1e0f
                                                                      //fff0" , 10 for 16 bytes by psz. starts with 04 for byte padding 
                  // 04f0ff0f1e010410526164696f436f696e2077616c6c6574
-                ("04f0ff0f1e010410526164696f436f696e2077616c6c6574");
+                  ("04ffff001d01042953656777697420616464656420746f204269746e657420726573746172742030322d32362d32303233");
             t.addInput(new TransactionInput(params, t, bytes));
             ByteArrayOutputStream scriptPubKeyBytes = new ByteArrayOutputStream();
             Script.writeBytes(scriptPubKeyBytes, Utils.HEX.decode
-                    ("046b8e36534122449a1d0c0c2b380647b23b562fb0be95b698596a2507eb6aa5c5dba4294bc39f31b3b2351994673ce150449ad83bce4b7624b7c488f6ca23aa71"));
+                    ("04594c39e7eacaa78d2bb0073725c1b75187a1a5b12a8e78d5222c9efacd7e37bb1455a582c2f6b2ac6b60d2899376780367f2a9aad91d42f23cd9f60663575bad"));
             scriptPubKeyBytes.write(ScriptOpCodes.OP_CHECKSIG);
             t.addOutput(new TransactionOutput(params, t, COIN.multiply(88), scriptPubKeyBytes.toByteArray()));
         } catch (Exception e) {
