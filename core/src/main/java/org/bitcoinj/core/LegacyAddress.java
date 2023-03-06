@@ -144,7 +144,7 @@ public class LegacyAddress extends Address {
      *             if the given address is valid but for a different chain (eg testnet vs mainnet)
      */
    
-   public static LegacyAddress fromBase58(@Nullable NetworkParameters params, String base58) 
+   public static LegacyAddress fromBase58(@Nullable NetworkParameters params, String base58) {
        //throws AddressFormatException, AddressFormatException.WrongNetwork {
         byte[] versionAndDataBytes = Base58.decodeChecked(base58);
         int version = versionAndDataBytes[0] & 0xFF;
@@ -156,7 +156,7 @@ public class LegacyAddress extends Address {
                 else if (version == p.getP2SHHeader())
                     return new LegacyAddress(p, true, bytes);
             }
-            //throw new AddressFormatException.InvalidPrefix("No network found for " + base58);
+          //  throw new AddressFormatException.InvalidPrefix("No network found for " + base58);
         } else {
             if (version == params.getAddressHeader())
                 return new LegacyAddress(params, false, bytes);
