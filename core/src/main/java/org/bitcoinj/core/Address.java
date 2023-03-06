@@ -51,8 +51,7 @@ public abstract class Address extends PrefixedChecksummedBytes {
      * @throws AddressFormatException.WrongNetwork
      *             if the given string is valid but not for the expected network (eg testnet vs mainnet)
      */
-   /*
-   public static Address fromString(@Nullable NetworkParameters params, String str)
+    public static Address fromString(@Nullable NetworkParameters params, String str)
             throws AddressFormatException {
         try {
             return LegacyAddress.fromBase58(params, str);
