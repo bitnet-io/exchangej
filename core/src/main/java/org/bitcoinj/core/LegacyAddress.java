@@ -143,27 +143,27 @@ public class LegacyAddress extends Address {
      * @throws AddressFormatException.WrongNetwork
      *             if the given address is valid but for a different chain (eg testnet vs mainnet)
      */
-   /*
+   
    public static LegacyAddress fromBase58(@Nullable NetworkParameters params, String base58) {
          //   throws AddressFormatException, AddressFormatException.WrongNetwork {
         byte[] versionAndDataBytes = Base58.decodeChecked(base58);
         int version = versionAndDataBytes[0] & 0xFF;
         byte[] bytes = Arrays.copyOfRange(versionAndDataBytes, 1, versionAndDataBytes.length);
-       // if (params == null) {
-         //   for (NetworkParameters p : Networks.get()) {
-         //       if (version == p.getAddressHeader())
-         //           return new LegacyAddress(p, false, bytes);
-         //       else if (version == p.getP2SHHeader())
-           //         return new LegacyAddress(p, true, bytes);
-          //  }
+        if (params == null) {
+            for (NetworkParameters p : Networks.get()) {
+                if (version == p.getAddressHeader())
+                    return new LegacyAddress(p, false, bytes);
+                else if (version == p.getP2SHHeader())
+                    return new LegacyAddress(p, true, bytes);
+            }
            // throw new AddressFormatException.InvalidPrefix("No network found for " + base58);
-        //} else {
-          //  if (version == params.getAddressHeader())
-            //    return new LegacyAddress(params, false, bytes);
-           // else if (version == params.getP2SHHeader())
-             //   return new LegacyAddress(params, true, bytes);
+        } else {
+            if (version == params.getAddressHeader())
+                return new LegacyAddress(params, false, bytes);
+            else if (version == params.getP2SHHeader())
+                return new LegacyAddress(params, true, bytes);
            // throw new AddressFormatException.WrongNetwork(version);
-       // }
+        }
     }
 
     /** @deprecated use {@link #fromPubKeyHash(NetworkParameters, byte[])} */
@@ -228,10 +228,11 @@ public class LegacyAddress extends Address {
      * @return network the address is valid for
      * @throws AddressFormatException if the given base58 doesn't parse or the checksum is invalid
      */
-   // public static NetworkParameters getParametersFromAddress(String address) {
+    public static NetworkParameters getParametersFromAddress(String address) {
         //throws AddressFormatException {
    //     return LegacyAddress.fromBase58(null, address).getParameters();
-  //  }
+          return true;
+    }
 
     @Override
     public boolean equals(Object o) {
