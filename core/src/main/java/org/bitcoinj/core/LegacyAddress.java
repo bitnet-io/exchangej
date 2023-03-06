@@ -228,10 +228,10 @@ public class LegacyAddress extends Address {
      * @return network the address is valid for
      * @throws AddressFormatException if the given base58 doesn't parse or the checksum is invalid
      */
-    public static NetworkParameters getParametersFromAddress(String address) {
+   // public static NetworkParameters getParametersFromAddress(String address) {
         //throws AddressFormatException {
-        return LegacyAddress.fromBase58(null, address).getParameters();
-    }
+   //     return LegacyAddress.fromBase58(null, address).getParameters();
+  //  }
 
     @Override
     public boolean equals(Object o) {
