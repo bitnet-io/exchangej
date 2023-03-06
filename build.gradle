@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        jcenter()
+                google()
+
+    }
+// mavenCentral()
+
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6'
+    }
+}
+
+allprojects {
+    repositories {
+         mavenLocal()
+        jcenter()
+        google()
+    maven { url "https://jitpack.io" }
+
+    }
+
+    group = 'com.dogecoin'
+}

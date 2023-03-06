@@ -1,0 +1,13 @@
+target
+build
+.gradle
+.project
+.classpath
+.settings
+.idea
+*.iml
+*.chain
+*.spvchain
+*.wallet
+/nbproject/private/
+/build/
