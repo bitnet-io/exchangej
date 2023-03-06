@@ -115,10 +115,15 @@ public class Block extends Message {
 
     /** Special case constructor, used for the genesis node, cloneAsHeader and unit tests. */
     Block(NetworkParameters params, long setVersion) {
-        super(params);
+ 
+       super(params);
         // Set up a few basic things. We are not complete after this though.
         version = setVersion;
-        difficultyTarget = 0x1d07fff8L;
+	// difficultyTarget = 0x207fFFFFL;
+       
+	 //difficultyTarget =   0x00ffffffL;
+        difficultyTarget =  0x1e0ffff0L;
+       //difficultyTarget =  0x1d00ffffL;
         time = Utils.currentTimeSeconds();
         prevBlockHash = Sha256Hash.ZERO_HASH;
 
@@ -526,10 +531,10 @@ public class Block extends Message {
      * target is represented using a compact form. If this form decodes to a value that is out of bounds, an exception
      * is thrown.
      */
-    public BigInteger getDifficultyTargetAsInteger() throws VerificationException {
+   public BigInteger getDifficultyTargetAsInteger() throws VerificationException {
         BigInteger target = Utils.decodeCompactBits(difficultyTarget);
-        if (target.signum() == 0 || target.compareTo(params.maxTarget) < 0)
-            throw new VerificationException("Difficulty target is bad: " + target.toString());
+        if (target.signum() <= 0 || target.compareTo(params.maxTarget) > 0)
+           throw new VerificationException("Difficulty target is bad: " + target.toString());
         return target;
     }
 
