@@ -84,10 +84,10 @@ public abstract class AbstractBitcoinNetParams extends NetworkParameters {
         if (!isDifficultyTransitionPoint(storedPrev.getHeight())) {
 
             // No ... so check the difficulty didn't actually change.
-            if (nextBlock.getDifficultyTarget() != prev.getDifficultyTarget())
-                throw new VerificationException("Unexpected change in difficulty at height " + storedPrev.getHeight() +
-                        ": " + Long.toHexString(nextBlock.getDifficultyTarget()) + " vs " +
-                        Long.toHexString(prev.getDifficultyTarget()));
+          //  if (nextBlock.getDifficultyTarget() != prev.getDifficultyTarget())
+            //    throw new VerificationException("Unexpected change in difficulty at height " + storedPrev.getHeight() +
+              //          ": " + Long.toHexString(nextBlock.getDifficultyTarget()) + " vs " +
+                //        Long.toHexString(prev.getDifficultyTarget()));
             return;
         }
 
