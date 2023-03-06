@@ -230,8 +230,8 @@ public class LegacyAddress extends Address {
      */
     public static NetworkParameters getParametersFromAddress(String address) {
         //throws AddressFormatException {
-   //     return LegacyAddress.fromBase58(null, address).getParameters();
-          return true;
+       return LegacyAddress.fromBase58(null, address).getParameters();
+          
     }
 
     @Override
