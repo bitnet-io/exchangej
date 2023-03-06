@@ -19,13 +19,10 @@ package org.bitcoinj.tools;
 
 import org.bitcoinj.core.listeners.NewBestBlockListener;
 import org.bitcoinj.core.*;
-import org.libdohj.core.AltcoinNetworkParameters;
-import org.bitcoinj.core.NetworkParameters;
-
 import org.bitcoinj.net.discovery.DnsDiscovery;
-import org.libdohj.params.DogecoinMainNetParams;
-import org.libdohj.params.DogecoinRegTestParams;
-import org.libdohj.params.DogecoinTestNet3Params;
+import org.bitcoinj.params.MainNetParams;
+import org.bitcoinj.params.RegTestParams;
+import org.bitcoinj.params.TestNet3Params;
 import org.bitcoinj.store.BlockStore;
 import org.bitcoinj.store.MemoryBlockStore;
 import org.bitcoinj.utils.BriefLogFormatter;
@@ -68,7 +65,7 @@ public class BuildCheckpoints {
         parser.accepts("help");
         OptionSpec<NetworkEnum> netFlag = parser.accepts("net").withRequiredArg().ofType(NetworkEnum.class).defaultsTo(NetworkEnum.MAIN);
         parser.accepts("peer").withRequiredArg();
-        OptionSpec<Integer> daysFlag = parser.accepts("days").withRequiredArg().ofType(Integer.class).defaultsTo(10);
+        OptionSpec<Integer> daysFlag = parser.accepts("days").withRequiredArg().ofType(Integer.class).defaultsTo(30);
         OptionSet options = parser.parse(args);
 
         if (options.has("help")) {
@@ -79,19 +76,16 @@ public class BuildCheckpoints {
         final String suffix;
         switch (netFlag.value(options)) {
             case MAIN:
-                params = DogecoinMainNetParams.get();
-                suffix = "";
-                break;
             case PROD:
-                params = DogecoinMainNetParams.get();
+                params = MainNetParams.get();
                 suffix = "";
                 break;
             case TEST:
-                params = DogecoinTestNet3Params.get();
+                params = TestNet3Params.get();
                 suffix = "-testnet";
                 break;
             case REGTEST:
-                params = DogecoinRegTestParams.get();
+                params = RegTestParams.get();
                 suffix = "-regtest";
                 break;
             default:
@@ -227,24 +221,11 @@ public class BuildCheckpoints {
 
         checkState(manager.numCheckpoints() == expectedSize);
 
-
-
-
-
-//#date +%s
-//1632768878
-//┌─[root@fedora]─[/home/c4pt/opt/libdohj/tools]
-//└──╼ #radiocoin-cli getblockhash 0
-//000007ce46e6c59844c34fa7ba5b27c8dac0653a27fcfb7340cc0158849e4afd
-//┌─[root@fedora]─[/home/c4pt/opt/libdohj/tools]
-//└──╼ #
-
-
         if (params.getId().equals(NetworkParameters.ID_MAINNET)) {
-            StoredBlock test = manager.getCheckpointBefore(1632768878); // Thu Jan 23 19:00:00 CET 2014
-            checkState(test.getHeight() == 0);
+            StoredBlock test = manager.getCheckpointBefore(1390500000); // Thu Jan 23 19:00:00 CET 2014
+            checkState(test.getHeight() == 280224);
             checkState(test.getHeader().getHashAsString()
-                    .equals("000007ce46e6c59844c34fa7ba5b27c8dac0653a27fcfb7340cc0158849e4afd"));
+                    .equals("00000000000000000b5d59a15f831e1c45cb688a4db6b0a60054d49a9997fa34"));
         } else if (params.getId().equals(NetworkParameters.ID_TESTNET)) {
             StoredBlock test = manager.getCheckpointBefore(1390500000); // Thu Jan 23 19:00:00 CET 2014
             checkState(test.getHeight() == 167328);

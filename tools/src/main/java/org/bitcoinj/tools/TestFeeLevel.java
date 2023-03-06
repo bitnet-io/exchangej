@@ -16,16 +16,14 @@
 
 package org.bitcoinj.tools;
 
-
 import org.bitcoinj.core.*;
 import org.bitcoinj.core.listeners.PeerConnectedEventListener;
 import org.bitcoinj.core.listeners.PeerDisconnectedEventListener;
 import org.bitcoinj.kits.WalletAppKit;
-import org.libdohj.params.DogecoinMainNetParams;
+import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.utils.BriefLogFormatter;
 import org.bitcoinj.wallet.SendRequest;
 import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.core.NetworkParameters;
 
 import java.io.File;
 import java.util.concurrent.ExecutionException;
@@ -35,7 +33,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class TestFeeLevel {
 
-    private static final DogecoinMainNetParams PARAMS = DogecoinMainNetParams.get();
+    private static final MainNetParams PARAMS = MainNetParams.get();
     private static final int NUM_OUTPUTS = 2;
     private static WalletAppKit kit;
 

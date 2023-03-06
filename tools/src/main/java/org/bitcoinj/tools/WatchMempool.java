@@ -21,24 +21,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bitcoinj.core.listeners.*;
-import org.libdohj.params.AbstractDogecoinParams;
+import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.core.Peer;
 import org.bitcoinj.core.PeerGroup;
 import org.bitcoinj.core.Transaction;
 import org.bitcoinj.net.discovery.DnsDiscovery;
-import org.libdohj.params.DogecoinMainNetParams;
+import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.utils.BriefLogFormatter;
 import org.bitcoinj.wallet.DefaultRiskAnalysis;
 import org.bitcoinj.wallet.RiskAnalysis.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.bitcoinj.core.NetworkParameters;
 
 import com.google.common.collect.ImmutableList;
 
 public class WatchMempool {
     private static Logger log = LoggerFactory.getLogger(WatchMempool.class);
-    private static final NetworkParameters PARAMS = DogecoinMainNetParams.get();
+    private static final NetworkParameters PARAMS = MainNetParams.get();
     private static final ImmutableList<Transaction> NO_DEPS = ImmutableList.of();
     private static final Map<String, Integer> counters = new HashMap<String, Integer>();
     private static final String TOTAL_KEY = "TOTAL";

@@ -16,7 +16,4 @@
 
 set -e
 args="$@"
-gradle --console=plain build_checkpoints "-PappArgs=$args" --stacktrace 
-#-Xmx256m
-
-#DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+gradle -q --no-daemon --console=plain build_checkpoints "-PappArgs=$args"

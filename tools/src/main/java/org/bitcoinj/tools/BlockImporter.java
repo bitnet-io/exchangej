@@ -17,8 +17,8 @@
 package org.bitcoinj.tools;
 
 import org.bitcoinj.core.*;
-import org.libdohj.params.DogecoinMainNetParams;
-import org.libdohj.params.DogecoinTestNet3Params;
+import org.bitcoinj.params.MainNetParams;
+import org.bitcoinj.params.TestNet3Params;
 import org.bitcoinj.store.*;
 import org.bitcoinj.utils.BlockFileLoader;
 import com.google.common.base.Preconditions;
@@ -36,9 +36,9 @@ public class BlockImporter {
         
         NetworkParameters params;
         if (args[0].equals("test"))
-            params = DogecoinTestNet3Params.get();
+            params = TestNet3Params.get();
         else
-            params = DogecoinMainNetParams.get();
+            params = MainNetParams.get();
         new Context(params);
         
         BlockStore store;
