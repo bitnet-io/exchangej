@@ -138,9 +138,9 @@ public abstract class AbstractBitcoinNetParams extends NetworkParameters {
         newTarget = newTarget.and(mask);
         long newTargetCompact = Utils.encodeCompactBits(newTarget);
 
-        if (newTargetCompact != receivedTargetCompact)
-            throw new VerificationException("Network provided difficulty bits do not match what was calculated: " +
-                    Long.toHexString(newTargetCompact) + " vs " + Long.toHexString(receivedTargetCompact));
+        //if (newTargetCompact != receivedTargetCompact)
+          //  throw new VerificationException("Network provided difficulty bits do not match what was calculated: " +
+            //        Long.toHexString(newTargetCompact) + " vs " + Long.toHexString(receivedTargetCompact));
     }
 
     @Override
