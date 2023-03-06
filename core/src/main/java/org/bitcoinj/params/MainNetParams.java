@@ -36,7 +36,7 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         super();
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        maxTarget = Utils.decodeCompactBits(0x1e0ffff0L);
+        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
         dumpedPrivateKeyHeader = 158;
         addressHeader = 25;
         p2shHeader = 22;
@@ -56,7 +56,7 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         majorityRejectBlockOutdated = MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED;
         majorityWindow = MAINNET_MAJORITY_WINDOW;
 
- genesisBlock.setDifficultyTarget(0x1e0ffff0L);
+ genesisBlock.setDifficultyTarget(0x1d00ffffL);
         genesisBlock.setTime(1677414786L);
         genesisBlock.setNonce(1196422L);
         subsidyDecreaseBlockCount = 100000;
