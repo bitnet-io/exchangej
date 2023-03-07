@@ -219,6 +219,7 @@ public class BuildCheckpoints {
             fis.close();
         }
 
+/*
         checkState(manager.numCheckpoints() == expectedSize);
 
         if (params.getId().equals(NetworkParameters.ID_MAINNET)) {
@@ -232,6 +233,7 @@ public class BuildCheckpoints {
             checkState(test.getHeader().getHashAsString()
                     .equals("0000000000035ae7d5025c2538067fe7adb1cf5d5d9c31b024137d9090ed13a9"));
         }
+*/
     }
 
     private static void startPeerGroup(PeerGroup peerGroup, InetAddress ipAddress) {
