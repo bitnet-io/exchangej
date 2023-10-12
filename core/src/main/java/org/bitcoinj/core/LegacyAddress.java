@@ -147,7 +147,7 @@ public class LegacyAddress extends Address {
            throws AddressFormatException, AddressFormatException.WrongNetwork {
         byte[] versionAndDataBytes = Base58.decodeChecked(base58);
         //was zero here instead of 25
-	int version = versionAndDataBytes[25] & 0xFF;
+	int version = versionAndDataBytes[0] & 0xFF;
         byte[] bytes = Arrays.copyOfRange(versionAndDataBytes, 1, versionAndDataBytes.length);
         if (params == null) {
             for (NetworkParameters p : Networks.get()) {
