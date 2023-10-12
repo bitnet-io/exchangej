@@ -55,14 +55,16 @@ public abstract class Address extends PrefixedChecksummedBytes {
             throws AddressFormatException {
         try {
             return LegacyAddress.fromBase58(params, str);
-        } catch (AddressFormatException.WrongNetwork x) {
-            throw x;
-        } catch (AddressFormatException x) {
+        } //catch (AddressFormatException.WrongNetwork x) {
+  //          throw x;
+    //    } 
+catch (AddressFormatException x) {
             try {
                 return SegwitAddress.fromBech32(params, str);
-            } catch (AddressFormatException.WrongNetwork x2) {
-                throw x;
-            } catch (AddressFormatException x2) {
+            }// catch (AddressFormatException.WrongNetwork x2) {
+               // throw x;
+           // } 
+	     catch (AddressFormatException x2) {
                 throw new AddressFormatException(str);
             }
         }
