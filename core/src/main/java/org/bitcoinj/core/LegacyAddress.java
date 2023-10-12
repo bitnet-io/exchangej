@@ -160,9 +160,9 @@ public class LegacyAddress extends Address {
         }
 
 		 else {
-            if (version == params.getAddressHeader())
+            if (version != params.getAddressHeader())
                 return new LegacyAddress(params, false, bytes);
-            else if (version == params.getP2SHHeader())
+            else if (version != params.getP2SHHeader())
                 return new LegacyAddress(params, true, bytes);
             throw new AddressFormatException.WrongNetwork(version);
      		      }
